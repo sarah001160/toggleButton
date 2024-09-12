@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Toggle Button</title>
+</head>
+<style>
+  /* Basic styling */
+  body {
+    text-align: center;
+    margin: 0;
+    padding: 20px;
+  }
+
+  /* Toggle button container */
+  .toggle-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+  }
+
+  /* Hide the default checkbox */
+  .toggle-checkbox {
+    display: none;
+  }
+
+  /* Custom toggle button styling */
+  /* 膠囊形狀 */
+  .toggle-label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    background-color: grey;
+    border-radius: 25px;
+    padding: 5px;
+    width: 60px;
+    height: 30px;
+    position: relative;
+    transition: background-color 0.3s;
+  }
+
+  /* 圓球 */
+  .toggle-slider {
+    background-color: #ffffff;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    top: 5px;
+    left: 5%;
+    transition: transform 0.3s;
+  }
+
+  /* When the checkbox is checked (dark mode) */
+  /* 鄰近的下一個 +*/
+  .toggle-checkbox:checked+.toggle-label {
+    background-color: blue;
+  }
+
+  .toggle-checkbox:checked+.toggle-label .toggle-slider {
+    transform: translateX(30px);
+    /* 右推 */
+  }
+
+  section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+  }
+
+  section #sp1 {
+    padding-left: 5px;
+  }
+</style>
+
+<body>
+  <h1>Toggle button</h1>
+  <section>
+    <div class="toggle-container">
+      <input type="checkbox" id="toggle" class="toggle-checkbox" onclick="toggleClick('toggle')">
+      <label for="toggle" class="toggle-label">
+        <span class="toggle-slider"></span>
+      </label>
+    </div>
+    <span id="sp1">關</span>
+  </section>
+
+
+  <div class="toggle-container">
+    <input type="checkbox" id="toggle02" class="toggle-checkbox">
+    <label for="toggle02" class="toggle-label">
+      <span class="toggle-slider"></span>
+    </label>
+  </div>
+
+  <div class="toggle-container">
+    <input type="checkbox" id="toggle03" class="toggle-checkbox">
+    <label for="toggle03" class="toggle-label">
+      <span class="toggle-slider"></span>
+    </label>
+  </div>
+
+  <script>
+    // JS 部分可以綁 boolean
+    let status = false;
+    function toggleClick(id) {
+      const ckBox = document.getElementById(id);
+      if (ckBox.checked) {
+        status = true;
+        const sp1El = document.getElementById('sp1');
+        sp1El.textContent = "開";
+        sp1El.textContent.style.color = "blue";
+      } else {
+        status = false;
+        const sp1El = document.getElementById('sp1');
+        sp1El.textContent = "關";
+        sp1El.textContent.style.color = "grey";
+      }
+
+    }
+  </script>
+
+</body>
+
+</html>
